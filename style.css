@@ -833,3 +833,49 @@ footer {
         max-width: none;
     }
 }
+
+.login-section{
+  width:100%;
+  max-width:400px;
+  margin:40px auto;
+  padding:30px;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:20px;
+}
+
+.login-section h2{
+  margin-bottom:20px;
+  text-align:center;
+  color:#fff;
+}
+
+#loginForm{
+  display:flex;
+  flex-direction:column;
+  gap:15px;
+}
+
+#loginForm input{
+  padding:14px;
+  border-radius:12px;
+  border:1px solid var(--border);
+  background:#0d0d10;
+  color:#fff;
+  outline:none;
+}
+
+#loginForm button{
+  padding:14px;
+  border:none;
+  border-radius:12px;
+  background:var(--pink);
+  color:#fff;
+  font-weight:700;
+  cursor:pointer;
+  transition:.3s;
+}
+
+#loginForm button:hover{
+  opacity:.8;
+}
