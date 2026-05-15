@@ -159,3 +159,34 @@ btnTema.onclick = function() {
 if (navInner) navInner.appendChild(btnTema);
 
 aplicarTema(tema);
+
+
+function mostrarToast(msg, tipo) {
+  const icones = { info: 'ℹ️', success: '✅', error: '❌', warn: '⚠️' };
+  const toast  = document.createElement('div');
+  toast.className = 'toast toast-' + (tipo || 'info');
+  toast.innerHTML = '<span>' + (icones[tipo] || 'ℹ️') + '</span> ' + msg;
+  document.body.appendChild(toast);
+
+  setTimeout(function() { toast.classList.add('toast-show'); }, 10);
+  setTimeout(function() {
+    toast.classList.remove('toast-show');
+    setTimeout(function() { toast.remove(); }, 400);
+  }, 3000);
+
+  toast.onclick = function() {
+    toast.classList.remove('toast-show');
+    setTimeout(function() { toast.remove(); }, 400);
+  };
+}
+
+window.mostrarToast = mostrarToast;
+
+const btnIniciar = document.querySelector('.hero-cta .btn-primary');
+if (btnIniciar) {
+  btnIniciar.addEventListener('click', function(e) {
+    e.preventDefault();
+    mostrarToast('Modo Estudo ativado! Role para explorar as funcionalidades 📚', 'success');
+    document.getElementById('funcionalidades').scrollIntoView({ behavior: 'smooth' });
+  });
+}
