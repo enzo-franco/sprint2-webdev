@@ -225,3 +225,17 @@ loginForm.addEventListener('submit', function(event) {
 
   alert('Login válido!');
 });
+
+window.addEventListener('load', () => {
+  const nome = prompt('Digite seu nome');
+
+  if(nome) {
+    alert(`Bem-vindo, ${nome}!`);
+  }
+
+  const continuar = confirm('Deseja continuar navegando?');
+
+  if(!continuar) {
+    alert('Até a próxima!');
+  }
+});
