@@ -206,3 +206,22 @@ loginForm.addEventListener('submit', function(event) {
 
   alert('Login realizado com sucesso!');
 });
+
+loginForm.addEventListener('submit', function(event) {
+  event.preventDefault();
+
+  const email = document.getElementById('email').value;
+  const senha = document.getElementById('senha').value;
+
+  if(!email.includes('@')) {
+    alert('Digite um email válido');
+    return;
+  }
+
+  if(senha.length < 6) {
+    alert('A senha precisa ter pelo menos 6 caracteres');
+    return;
+  }
+
+  alert('Login válido!');
+});
