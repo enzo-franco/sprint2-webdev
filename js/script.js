@@ -239,3 +239,11 @@ window.addEventListener('load', () => {
     alert('Até a próxima!');
   }
 });
+
+function validarEmail(email) {
+  return email.includes('@');
+}
+
+function validarSenha(senha) {
+  return senha.length >= 6;
+}
