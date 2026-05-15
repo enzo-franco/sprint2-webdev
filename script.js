@@ -81,10 +81,59 @@ playBtn.onclick = function(e) {
   }
 };
 
-// Clique na câmera avança slide
+
 cameraView.onclick = function() {
   atual = (atual + 1) % slides.length;
   renderizarSlide(atual);
 };
 
 renderizarSlide(0);
+
+
+let favoritos = JSON.parse(localStorage.getItem('modoestudo_favoritos')) || [];
+
+function salvarFavoritos() {
+  localStorage.setItem('modoestudo_favoritos', JSON.stringify(favoritos));
+}
+
+function atualizarContador() {
+  const contador = document.getElementById('fav-contador');
+  if (contador) {
+    contador.textContent = favoritos.length > 0 ? ` ★${favoritos.length}` : '';
+  }
+}
+
+
+const navLogo  = document.querySelector('.nav-logo');
+const contador = document.createElement('span');
+contador.id    = 'fav-contador';
+contador.className = 'fav-contador';
+if (navLogo) navLogo.appendChild(contador);
+
+
+const cards = document.querySelectorAll('.modo-card');
+cards.forEach(card => {
+  const titulo = card.querySelector('.card-title').textContent.trim();
+  const isFav  = favoritos.includes(titulo);
+
+  const btn = document.createElement('button');
+  btn.className = 'fav-btn' + (isFav ? ' fav-ativo' : '');
+  btn.innerHTML = isFav ? '★' : '☆';
+  card.appendChild(btn);
+
+  btn.onclick = function() {
+    if (favoritos.includes(titulo)) {
+      favoritos = favoritos.filter(f => f !== titulo);
+      btn.innerHTML = '☆';
+      btn.classList.remove('fav-ativo');
+    } else {
+      favoritos.push(titulo);
+      btn.innerHTML = '★';
+      btn.classList.add('fav-ativo');
+    }
+    salvarFavoritos();
+    atualizarContador();
+  };
+});
+
+atualizarContador();
