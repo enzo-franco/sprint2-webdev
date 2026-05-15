@@ -137,3 +137,25 @@ cards.forEach(card => {
 });
 
 atualizarContador();
+
+
+let tema = localStorage.getItem('modoestudo_tema') || 'dark';
+
+function aplicarTema(t) {
+  tema = t;
+  document.documentElement.setAttribute('data-tema', tema);
+  localStorage.setItem('modoestudo_tema', tema);
+  btnTema.textContent = tema === 'dark' ? '☀️' : '🌙';
+}
+
+const navInner = document.querySelector('.nav-inner');
+const btnTema  = document.createElement('button');
+btnTema.className = 'btn-tema';
+
+btnTema.onclick = function() {
+  aplicarTema(tema === 'dark' ? 'light' : 'dark');
+};
+
+if (navInner) navInner.appendChild(btnTema);
+
+aplicarTema(tema);

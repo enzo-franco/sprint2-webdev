@@ -519,3 +519,13 @@ footer {
     }
 
 }
+
+[data-tema="light"] {
+    --bg: #f4f4f8;
+    --surface: #ffffff;
+    --text: #1a1a2e;
+    /* ... */
+    background: #f4f4f8;
+    /* aplicado direto no html */
+    color: #1a1a2e;
+}
